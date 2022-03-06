@@ -21,7 +21,8 @@ func InitDB() {
         description TEXT,
         timestamp TIMESTAMP,
         processed BOOLEAN DEFAULT FALSE,
-        location VARCHAR(255)
+        location VARCHAR(255),
+        video_url VARCHAR(255)
     )`)
     if err != nil {
         log.Fatal("Failed to create table:", err)

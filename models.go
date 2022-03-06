@@ -9,4 +9,5 @@ type Event struct {
     Timestamp   time.Time `json:"timestamp" db:"timestamp"`
     Processed   bool      `json:"processed" db:"processed"`
     Location    string    `json:"location" db:"location"`
+    VideoURL    string    `json:"video_url" db:"video_url"`
 }

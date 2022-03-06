@@ -19,7 +19,8 @@ func InitDB() {
         id SERIAL PRIMARY KEY,
         title VARCHAR(255) NOT NULL,
         description TEXT,
-        timestamp TIMESTAMP
+        timestamp TIMESTAMP,
+        processed BOOLEAN DEFAULT FALSE
     )`)
     if err != nil {
         log.Fatal("Failed to create table:", err)

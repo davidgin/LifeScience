@@ -23,8 +23,8 @@ func CreateEvent(c *gin.Context) {
     go func() {
         defer wg.Done()
         result, err := DB.ExecContext(context.Background(),
-            "INSERT INTO events (title, description, timestamp) VALUES ($1, $2, $3) RETURNING id",
-            event.Title, event.Description, event.Timestamp)
+            "INSERT INTO events (title, description, timestamp, processed) VALUES ($1, $2, $3, $4) RETURNING id",
+            event.Title, event.Description, event.Timestamp, false)
         if err != nil {
             log.Println("PostgreSQL error:", err)
             return

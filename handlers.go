@@ -18,7 +18,7 @@ func CreateEvent(c *gin.Context) {
 
     var mu sync.Mutex
     var wg sync.WaitGroup
-    wg.Add(1)
+    wg.Add(2)
 
     go func() {
         defer wg.Done()
@@ -33,6 +33,22 @@ func CreateEvent(c *gin.Context) {
         result.Scan(&id)
         mu.Lock()
         event.ID = id
+        mu.Unlock()
+    }()
+
+    go func() {
+        defer wg.Done()
+        location, err := FetchOSMLocationWithRetry(event.Title)
+        if err != nil {
+            log.Println("OSM fetch failed:", err)
+            return
+        }
+        mu.Lock()
+        event.Location = location
+        _, err = DB.Exec("UPDATE events SET location = $1 WHERE id = $2", location, event.ID)
+        if err != nil {
+            log.Println("Update location error:", err)
+        }
         mu.Unlock()
     }()
 

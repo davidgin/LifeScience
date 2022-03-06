@@ -28,3 +28,13 @@ func CreateEvent(c *gin.Context) {
     event.ID = id
     c.JSON(201, event)
 }
+
+func GetEvents(c *gin.Context) {
+    var events []Event
+    err := DB.Select(&events, "SELECT * FROM events ORDER BY timestamp DESC")
+    if err != nil {
+        c.JSON(500, gin.H{"error": err.Error()})
+        return
+    }
+    c.JSON(200, events)
+}

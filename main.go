@@ -10,5 +10,6 @@ func main() {
 
     r := gin.Default()
     r.POST("/api/v1/events", CreateEvent)
+    r.GET("/api/v1/events", GetEvents)
     r.Run(":8080")
 }

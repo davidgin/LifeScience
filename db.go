@@ -20,7 +20,8 @@ func InitDB() {
         title VARCHAR(255) NOT NULL,
         description TEXT,
         timestamp TIMESTAMP,
-        processed BOOLEAN DEFAULT FALSE
+        processed BOOLEAN DEFAULT FALSE,
+        location VARCHAR(255)
     )`)
     if err != nil {
         log.Fatal("Failed to create table:", err)

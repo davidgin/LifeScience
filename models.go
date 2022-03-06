@@ -8,4 +8,5 @@ type Event struct {
     Description string    `json:"description" db:"description"`
     Timestamp   time.Time `json:"timestamp" db:"timestamp"`
     Processed   bool      `json:"processed" db:"processed"`
+    Location    string    `json:"location" db:"location"`
 }

@@ -14,4 +14,14 @@ func InitDB() {
     if err != nil {
         log.Fatal("Failed to connect to PostgreSQL:", err)
     }
+
+    _, err = DB.Exec(`CREATE TABLE IF NOT EXISTS events (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        description TEXT,
+        timestamp TIMESTAMP
+    )`)
+    if err != nil {
+        log.Fatal("Failed to create table:", err)
+    }
 }

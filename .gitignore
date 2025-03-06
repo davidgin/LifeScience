@@ -1,0 +1,53 @@
+# Compiled Go binaries and build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/life-science
+
+# Go dependency directories
+/vendor/
+
+# Dependency cache (optional)
+#/go.sum
+
+# Logs and debugging files
+*.log
+log/
+*.out
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment files
+.env
+*.env.local
+config.local.yml
+
+# Docker-related ignores
+Dockerfile.*
+docker-compose.override.yml
+*.dockerignore
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Database runtime files
+*.db
+*.sqlite3
+postgres-data/
+
+# Test and coverage files
+*.test
+coverage.txt
+profile.cov

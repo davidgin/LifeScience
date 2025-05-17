@@ -41,9 +41,11 @@ and launching the app with `go run main.go` (*starts the API at `http://localhos
 ## 🎯 Usage
 
 Interact with the API—create a new event with `curl -X POST http://localhost:8080/api/v1/events -H "Content-Type: application/json" -d '{"title": "Frog Dissection", "description": "Lab experiment video", "video_url": "https://example.com/frog.mp4"}'`
+
  (*submits an event; the API assigns an `id`, `timestamp`, and fetches a `location` from OSM, returning a sample response like:
  `{"id": 1, "title": "Frog Dissection", "description": "Lab experiment video", "timestamp": "2025-03-06T12:00:00Z", "processed": false,
  "location": "Unknown Location", "video_url": "https://example.com/frog.mp4"}`*),  
+ 
 retrieve all events with `curl http://localhost:8080/api/v1/events`
  (*returns events in descending timestamp order, e.g., `[{"id": 1, "title": "Frog Dissection", "description": "Lab experiment video", "timestamp": "2025-03-06T12:00:00Z", "processed": false, "location": "Unknown Location", "video_url": "https://example.com/frog.mp4"}]`*),  
 
